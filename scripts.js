@@ -1,7 +1,7 @@
 var numbers = document.getElementsByClassName("num");
 var calcInput = document.getElementsByClassName("calc-input")[0];
-var x=0
-var y=0
+var x=""
+var y=""
 var answer=false
 var currentoperator=""
 for (var i = 0; i < numbers.length; i++) {
@@ -19,29 +19,50 @@ for (var i = 0; i < numbers.length; i++) {
 var operator = document.getElementsByClassName("operator");
 operator[0].addEventListener("click", function(){
 	currentoperator=operator[0].innerHTML;
-	
+	if(x!=""){
+		y=calcInput.innerHTML;
+		x=calculateContinue(x,y,currentoperator);
+
+	}else{
 	x=calcInput.innerHTML;
 	calcInput.innerHTML="";
+}
 
 })
 operator[1].addEventListener("click", function(){
-	alert["operator1"]
 	currentoperator=operator[1].innerHTML;
+	if(x!=""){
+		y=calcInput.innerHTML;
+		x=calculateContinue(x,y,currentoperator);
+
+	}else{
+	
 	x=calcInput.innerHTML;
 	calcInput.innerHTML="";	
+}
 
 })
 operator[2].addEventListener("click", function(){
 	currentoperator=operator[2].innerHTML;
+	if(x!=""){
+		y=calcInput.innerHTML;
+		x=calculateContinue(x,y,currentoperator);
+
+	}else{
 	x=calcInput.innerHTML;
 	calcInput.innerHTML="";	
-
+}
 })
 operator[3].addEventListener("click", function(){
 	currentoperator=operator[3].innerHTML;
+	if(x!=""){
+		y=calcInput.innerHTML;
+		x=calculateContinue(x,y,currentoperator);
+
+	}else{
 	x=calcInput.innerHTML;
 	calcInput.innerHTML="";	
-
+}
 })
 operator[4].addEventListener("click", function(){
 	
@@ -101,6 +122,33 @@ function calculate(x, y, operator) {
 		x=0;
 		y=0;
 		currentoperator=""
+	}
+
+}
+function calculateContinue(x, y, operator) {
+	console.log(x)
+	console.log(y)
+	console.log(operator)
+	answer=true;
+	if(operator==="-"){
+		calcInput.innerHTML=parseInt(x)-parseInt(y)
+		x=parseInt(calcInput.innerHTML);
+		return x;
+	}
+	if(operator==="+"){
+		calcInput.innerHTML=parseInt(x)+parseInt(y)
+		x=parseInt(calcInput.innerHTML);
+		return x;
+	}
+	if(operator==="x"){
+		calcInput.innerHTML=parseInt(x)*parseInt(y)
+		x=parseInt(calcInput.innerHTML);
+		return x;
+	}
+	if(operator==="/"){
+		calcInput.innerHTML=parseInt(x)/parseInt(y)
+		x=parseInt(calcInput.innerHTML);
+		return x;
 	}
 
 }
